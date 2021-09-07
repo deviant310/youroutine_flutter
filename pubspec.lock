@@ -67,6 +67,15 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  font_awesome_flutter:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: "9fd3eec57af88e66989e647da2d2695bf979c1bb"
+      url: "git@github.com:dunloop/font_awesome_flutter.git"
+    source: git
+    version: "9.1.1"
   mask_text_input_formatter:
     dependency: "direct main"
     description:
