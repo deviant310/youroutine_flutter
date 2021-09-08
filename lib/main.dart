@@ -47,7 +47,10 @@ class _LoginScreenState extends State<LoginScreen> {
     super.initState();
 
     countryEditingController.addListener(_printLatestValue);
-    phoneEditingController.value = phoneMaskFormatter.formatEditUpdate(TextEditingValue(text: ''), TextEditingValue(text: '7'));
+    phoneEditingController.value = phoneMaskFormatter.formatEditUpdate(
+      TextEditingValue(text: ''),
+      TextEditingValue(text: '7'),
+    );
   }
 
   @override
@@ -69,17 +72,18 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+          children: [
             Container(
               padding: EdgeInsets.symmetric(horizontal: 42),
               child: Column(
-                children: <Widget>[
+                children: [
                   Container(
                     width: 110,
                     height: 110,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(60),
-                        color: Palette.PrimaryBlueToDark),
+                      borderRadius: BorderRadius.circular(60),
+                      color: Palette.PrimaryBlueToDark,
+                    ),
                     child: Center(
                       child: Text(
                         'YR',
@@ -117,12 +121,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       children: [
                         Row(
                           children: [
-                            FaIcon(
-                              FontAwesomeIcons.solidGlobe,
-                              color: Palette.TextBlueToLight.shade300,
-                              size: 20,
-                            ),
-                            SizedBox(width: 20),
                             Expanded(
                               child: TextFormField(
                                 controller: countryEditingController,
@@ -132,7 +130,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                   color: Palette.TextBlueToLight,
                                   fontWeight: FontWeight.w500,
                                 ),
-                                decoration: decorations.input,
+                                decoration: decorations.input.copyWith(
+                                  icon: FaIcon(
+                                    FontAwesomeIcons.solidGlobe,
+                                    color: Palette.TextBlueToLight.shade300,
+                                    size: 20,
+                                  ),
+                                ),
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
                                     return 'Please enter some text';
@@ -146,12 +150,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(height: 20),
                         Row(
                           children: [
-                            FaIcon(
-                              FontAwesomeIcons.solidPhoneAlt,
-                              color: Palette.TextBlueToLight.shade300,
-                              size: 20,
-                            ),
-                            SizedBox(width: 20),
                             Expanded(
                               child: TextFormField(
                                 controller: phoneEditingController,
@@ -161,11 +159,15 @@ class _LoginScreenState extends State<LoginScreen> {
                                   color: Palette.TextBlueToLight,
                                   fontWeight: FontWeight.w500,
                                 ),
-                                decoration: decorations.input,
+                                decoration: decorations.input.copyWith(
+                                  icon: FaIcon(
+                                    FontAwesomeIcons.solidPhoneAlt,
+                                    color: Palette.TextBlueToLight.shade300,
+                                    size: 20,
+                                  ),
+                                ),
                                 keyboardType: TextInputType.number,
-                                inputFormatters: [
-                                  phoneMaskFormatter
-                                ],
+                                inputFormatters: [phoneMaskFormatter],
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
                                     return 'Please enter some text';
