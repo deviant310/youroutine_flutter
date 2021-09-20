@@ -17,6 +17,22 @@ class Palette {
     },
   );
 
+  static const MaterialColor PrimaryBlueToLight = const MaterialColor(
+    0xff34589d,
+    const <int, Color>{
+      50: const Color(0xff4869a7),
+      100: const Color(0xff5d79b1),
+      200: const Color(0xff718aba),
+      300: const Color(0xff859bc4),
+      400: const Color(0xff9aacce),
+      500: const Color(0xffaebcd8),
+      600: const Color(0xffc2cde2),
+      700: const Color(0xffd6deeb),
+      800: const Color(0xffebeef5),
+      900: const Color(0xffffffff),
+    },
+  );
+
   static const MaterialColor TextBlueToLight = const MaterialColor(
     0xff4c5b79,
     const <int, Color>{

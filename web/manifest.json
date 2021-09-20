@@ -1,6 +1,6 @@
 {
-    "name": "youroutine_flutter",
-    "short_name": "youroutine_flutter",
+    "name": "youroutine",
+    "short_name": "youroutine",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

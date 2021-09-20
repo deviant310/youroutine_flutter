@@ -1,4 +1,4 @@
-# youroutine_flutter
+# YouRoutine
 
 A new Flutter project.
 

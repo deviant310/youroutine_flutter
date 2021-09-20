@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.youroutine_flutter">
+    package="com.example.youroutine">
    <application
-        android:label="youroutine_flutter"
+        android:label="YouRoutine"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
