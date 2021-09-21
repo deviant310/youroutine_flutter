@@ -7,9 +7,14 @@ import 'package:youroutine/styles/palette.dart';
 import 'package:youroutine/styles/decorations.dart';
 
 class ConfirmScreen extends StatefulWidget {
-  ConfirmScreen({Key? key, required this.title}) : super(key: key);
+  ConfirmScreen({
+    Key? key,
+    required this.title,
+    required this.phoneNumber,
+  }) : super(key: key);
 
   final String title;
+  final String phoneNumber;
 
   @override
   _ConfirmScreenState createState() => _ConfirmScreenState();
@@ -22,10 +27,18 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
     mask: '#-#-#-#-#-#',
     filter: {"#": RegExp(r'[0-9]')},
   );
+  final phoneMaskFormatter = MaskTextInputFormatter(
+    mask: '+# ### ### ####',
+  );
 
   @override
   void initState() {
     super.initState();
+
+    phoneMaskFormatter.formatEditUpdate(
+      TextEditingValue(text: ''),
+      TextEditingValue(text: widget.phoneNumber),
+    );
   }
 
   @override
@@ -41,8 +54,9 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
     return Scaffold(
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            SizedBox(height: 65),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 42),
               child: Column(
@@ -66,7 +80,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                   ),
                   SizedBox(height: 55),
                   Text(
-                    '+7 999 526 6422',
+                    phoneMaskFormatter.getMaskedText(),
                     style: TextStyle(
                       color: Palette.TextBlueToLight,
                       fontSize: 25,
@@ -75,7 +89,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                   ),
                   SizedBox(height: 20),
                   Text(
-                    'Мы отправили вам SMS сообщение с кодом.',
+                    'Мы отправили вам SMS сообщение с\u{00A0}кодом.',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       height: 1.2,
@@ -106,6 +120,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                                     color: Palette.TextBlueToLight.shade300,
                                     size: 20,
                                   ),
+                                  hintText: 'Код',
                                 ),
                                 keyboardType: TextInputType.number,
                                 inputFormatters: [codeMaskFormatter],
@@ -128,11 +143,12 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                                 style: TextButton.styleFrom(
                                   minimumSize: Size(double.infinity, 45),
                                   side: BorderSide(
-                                    color: Palette.GreyToLight.shade400,
-                                  ),
+                                      //color: Palette.GreyToLight.shade400,
+                                      color:
+                                          Palette.PrimaryBlueToLight.shade700),
                                 ),
                                 onPressed: () {
-                                  Navigator.pushNamed(context, '/');
+                                  Navigator.pop(context);
                                 },
                                 child: Text(
                                   'Назад'.toUpperCase(),

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import 'package:youroutine/styles/palette.dart';
 import 'package:youroutine/styles/decorations.dart';
+import 'package:youroutine/widgets/screens/login/confirm.dart';
 
 class SignInScreen extends StatefulWidget {
   SignInScreen({Key? key, required this.title}) : super(key: key);
@@ -41,6 +41,33 @@ class _SignInScreenState extends State<SignInScreen> {
     super.dispose();
   }
 
+  Route _createRoute() {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => ConfirmScreen(
+        title: 'Подтверждение входа',
+        phoneNumber: phoneMaskFormatter.getUnmaskedText(),
+      ),
+      transitionDuration: Duration(milliseconds: 150),
+      reverseTransitionDuration: Duration(milliseconds: 150),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        final tween = Tween(begin: Offset(0.15, 0.0), end: Offset.zero);
+
+        final curvedAnimation = CurvedAnimation(
+          parent: animation,
+          curve: Curves.easeOut,
+        );
+
+        return SlideTransition(
+          position: tween.animate(curvedAnimation),
+          child: FadeTransition(
+            opacity: curvedAnimation,
+            child: child,
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final decorations = Decorations(context);
@@ -48,12 +75,13 @@ class _SignInScreenState extends State<SignInScreen> {
     return Scaffold(
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
               padding: EdgeInsets.symmetric(horizontal: 42),
               child: Column(
                 children: [
+                  SizedBox(height: 65),
                   Container(
                     width: 110,
                     height: 110,
@@ -113,6 +141,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                     color: Palette.TextBlueToLight.shade300,
                                     size: 20,
                                   ),
+                                  hintText: 'Страна',
                                 ),
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
@@ -142,6 +171,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                     color: Palette.TextBlueToLight.shade300,
                                     size: 20,
                                   ),
+                                  hintText: 'Номер телефона',
                                 ),
                                 keyboardType: TextInputType.number,
                                 inputFormatters: [phoneMaskFormatter],
@@ -168,7 +198,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             ),
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
-                                Navigator.pushNamed(context, '/confirm');
+                                Navigator.of(context).push(_createRoute());
                               }
                             },
                             child: Text(
