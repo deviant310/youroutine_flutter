@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import 'package:youroutine/styles/palette.dart';
 import 'package:youroutine/styles/decorations.dart';
 
@@ -24,7 +23,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
   final _formKey = GlobalKey<FormState>();
   final codeEditingController = TextEditingController();
   final codeMaskFormatter = MaskTextInputFormatter(
-    mask: '#-#-#-#-#-#',
+    mask: '###-###',
     filter: {"#": RegExp(r'[0-9]')},
   );
   final phoneMaskFormatter = MaskTextInputFormatter(
@@ -143,9 +142,9 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                                 style: TextButton.styleFrom(
                                   minimumSize: Size(double.infinity, 45),
                                   side: BorderSide(
-                                      //color: Palette.GreyToLight.shade400,
-                                      color:
-                                          Palette.PrimaryBlueToLight.shade700),
+                                    //color: Palette.GreyToLight.shade400,
+                                    color: Palette.PrimaryBlueToLight.shade700,
+                                  ),
                                 ),
                                 onPressed: () {
                                   Navigator.pop(context);

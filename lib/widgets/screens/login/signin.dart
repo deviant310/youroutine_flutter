@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:youroutine/core/animated-page-route-builder.dart';
+import 'package:youroutine/widgets/screens/login/confirm.dart';
 import 'package:youroutine/styles/palette.dart';
 import 'package:youroutine/styles/decorations.dart';
-import 'package:youroutine/widgets/screens/login/confirm.dart';
+import 'package:youroutine/styles/animations.dart';
 
 class SignInScreen extends StatefulWidget {
   SignInScreen({Key? key, required this.title}) : super(key: key);
@@ -41,30 +43,13 @@ class _SignInScreenState extends State<SignInScreen> {
     super.dispose();
   }
 
-  Route _createRoute() {
-    return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => ConfirmScreen(
+  Route _confirmScreenRoute() {
+    return AnimatedPageRouteBuilder(
+      widget: ConfirmScreen(
         title: 'Подтверждение входа',
         phoneNumber: phoneMaskFormatter.getUnmaskedText(),
       ),
-      transitionDuration: Duration(milliseconds: 150),
-      reverseTransitionDuration: Duration(milliseconds: 150),
-      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        final tween = Tween(begin: Offset(0.15, 0.0), end: Offset.zero);
-
-        final curvedAnimation = CurvedAnimation(
-          parent: animation,
-          curve: Curves.easeOut,
-        );
-
-        return SlideTransition(
-          position: tween.animate(curvedAnimation),
-          child: FadeTransition(
-            opacity: curvedAnimation,
-            child: child,
-          ),
-        );
-      },
+      transitionDuration: Animations.ScreenTransitionDuration,
     );
   }
 
@@ -198,7 +183,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             ),
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
-                                Navigator.of(context).push(_createRoute());
+                                Navigator.of(context).push(_confirmScreenRoute());
                               }
                             },
                             child: Text(
