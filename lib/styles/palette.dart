@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Palette {
-  static const PrimaryBlueToDark = const MaterialColor(
+  static const primaryBlueToDark = const MaterialColor(
     0xff34589d,
     const <int, Color>{
       50: const Color(0xff2f4f8d),
@@ -17,7 +17,7 @@ class Palette {
     },
   );
 
-  static const PrimaryBlueToLight = const MaterialColor(
+  static const primaryBlueToLight = const MaterialColor(
     0xff34589d,
     const <int, Color>{
       50: const Color(0xff4869a7),
@@ -33,7 +33,7 @@ class Palette {
     },
   );
 
-  static const TextBlueToLight = const MaterialColor(
+  static const textBlueToLight = const MaterialColor(
     0xff4c5b79,
     const <int, Color>{
       50: const Color(0xff5e6b86),
@@ -49,7 +49,7 @@ class Palette {
     },
   );
 
-  static const GreyToLight = const MaterialColor(
+  static const greyToLight = const MaterialColor(
     0xffd2d2d2,
     const <int, Color>{
       50: const Color(0xffd7d7d7),

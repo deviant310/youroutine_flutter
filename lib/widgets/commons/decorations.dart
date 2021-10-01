@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'palette.dart';
+import '../../styles/palette.dart';
 
 class Decorations {
   Decorations(this.context);
@@ -10,16 +10,16 @@ class Decorations {
   InputDecoration get input {
     return InputDecoration(
       hintStyle: TextStyle(
-        color: Palette.TextBlueToLight.shade600,
+        color: Palette.textBlueToLight.shade600,
       ),
       enabledBorder: UnderlineInputBorder(
         borderSide: BorderSide(
-          color: Palette.PrimaryBlueToLight.shade800,
+          color: Palette.primaryBlueToLight.shade800,
         ),
       ),
       focusedBorder: UnderlineInputBorder(
         borderSide: BorderSide(
-          color: Palette.PrimaryBlueToLight.shade700,
+          color: Palette.primaryBlueToLight.shade700,
         ),
       ),
       focusedErrorBorder: UnderlineInputBorder(

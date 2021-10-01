@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
-enum AnimatedPageRouteBuilderDirections { rightToLeft, bottomToTop }
+enum PageRouteDirections { rightToLeft, bottomToTop }
 
-class AnimatedPageRouteBuilder extends PageRouteBuilder {
-  AnimatedPageRouteBuilder({
+class ScreenRoute extends PageRouteBuilder {
+  ScreenRoute({
     required Widget widget,
     required Duration transitionDuration,
-    AnimatedPageRouteBuilderDirections direction =
-        AnimatedPageRouteBuilderDirections.rightToLeft,
+    PageRouteDirections direction = PageRouteDirections.rightToLeft,
   }) : super(
           pageBuilder: (context, animation, secondaryAnimation) => widget,
           transitionDuration: transitionDuration,
@@ -31,11 +30,12 @@ class AnimatedPageRouteBuilder extends PageRouteBuilder {
           },
         );
 
-  static Offset _getOffsetByDirection(AnimatedPageRouteBuilderDirections direction) {
+  static Offset _getOffsetByDirection(
+      PageRouteDirections direction) {
     switch (direction) {
-      case AnimatedPageRouteBuilderDirections.rightToLeft:
+      case PageRouteDirections.rightToLeft:
         return Offset(0.15, 0.0);
-      case AnimatedPageRouteBuilderDirections.bottomToTop:
+      case PageRouteDirections.bottomToTop:
         return Offset(0.0, 0.15);
     }
   }

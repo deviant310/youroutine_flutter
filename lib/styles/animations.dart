@@ -1,3 +1,3 @@
 class Animations {
-  static const ScreenTransitionDuration = const Duration(milliseconds: 150);
+  static const screenTransitionDuration = const Duration(milliseconds: 150);
 }

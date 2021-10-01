@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:youroutine/styles/palette.dart';
-import 'package:youroutine/styles/decorations.dart';
+import 'package:youroutine/widgets/commons/decorations.dart';
 
 class ConfirmScreen extends StatefulWidget {
   ConfirmScreen({
@@ -65,7 +65,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                     height: 110,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(60),
-                      color: Palette.PrimaryBlueToDark,
+                      color: Palette.primaryBlueToDark,
                     ),
                     child: Center(
                       child: Text(
@@ -81,7 +81,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                   Text(
                     phoneMaskFormatter.getMaskedText(),
                     style: TextStyle(
-                      color: Palette.TextBlueToLight,
+                      color: Palette.textBlueToLight,
                       fontSize: 25,
                       fontWeight: FontWeight.w500,
                     ),
@@ -92,7 +92,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       height: 1.2,
-                      color: Palette.TextBlueToLight,
+                      color: Palette.textBlueToLight,
                       fontSize: 14,
                     ),
                   ),
@@ -107,16 +107,16 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                             Expanded(
                               child: TextFormField(
                                 controller: codeEditingController,
-                                cursorColor: Palette.TextBlueToLight,
+                                cursorColor: Palette.textBlueToLight,
                                 style: TextStyle(
                                   fontSize: 14,
-                                  color: Palette.TextBlueToLight,
+                                  color: Palette.textBlueToLight,
                                   fontWeight: FontWeight.w500,
                                 ),
                                 decoration: decorations.input.copyWith(
                                   icon: FaIcon(
                                     FontAwesomeIcons.solidKey,
-                                    color: Palette.TextBlueToLight.shade300,
+                                    color: Palette.textBlueToLight.shade300,
                                     size: 20,
                                   ),
                                   hintText: 'Код',
@@ -143,7 +143,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                                   minimumSize: Size(double.infinity, 45),
                                   side: BorderSide(
                                     //color: Palette.GreyToLight.shade400,
-                                    color: Palette.PrimaryBlueToLight.shade700,
+                                    color: Palette.primaryBlueToLight.shade700,
                                   ),
                                 ),
                                 onPressed: () {
@@ -152,7 +152,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                                 child: Text(
                                   'Назад'.toUpperCase(),
                                   style: TextStyle(
-                                    color: Palette.TextBlueToLight,
+                                    color: Palette.textBlueToLight,
                                     fontSize: 13,
                                     fontWeight: FontWeight.bold,
                                   ),
