@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:youroutine/styles/palette.dart';
+import 'package:youroutine/styles/palette.dart' as Palette;
 import 'package:youroutine/widgets/screens/login/sign_in.dart';
 
 void main() {

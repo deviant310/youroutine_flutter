@@ -1,12 +1,12 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' as Material;
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HomeScreen extends Material.StatelessWidget {
+  const HomeScreen({Material.Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Text('Обзор'),
+  Material.Widget build(Material.BuildContext context) {
+    return Material.Container(
+      child: Material.Text('Обзор'),
     );
   }
 }

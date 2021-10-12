@@ -1,13 +1,13 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' as Material;
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart' as FontAwesome;
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:youroutine/styles/palette.dart';
-import 'package:youroutine/widgets/commons/decorations.dart';
+import 'package:youroutine/widgets/commons/text_field.dart';
+import 'package:youroutine/styles/palette.dart' as Palette;
 
-class ConfirmScreen extends StatefulWidget {
+class ConfirmScreen extends Material.StatefulWidget {
   ConfirmScreen({
-    Key? key,
+    Material.Key? key,
     required this.title,
     required this.phoneNumber,
   }) : super(key: key);
@@ -19,9 +19,9 @@ class ConfirmScreen extends StatefulWidget {
   _ConfirmScreenState createState() => _ConfirmScreenState();
 }
 
-class _ConfirmScreenState extends State<ConfirmScreen> {
-  final _formKey = GlobalKey<FormState>();
-  final codeEditingController = TextEditingController();
+class _ConfirmScreenState extends Material.State<ConfirmScreen> {
+  final _formKey = Material.GlobalKey<Material.FormState>();
+  final codeEditingController = Material.TextEditingController();
   final codeMaskFormatter = MaskTextInputFormatter(
     mask: '###-###',
     filter: {"#": RegExp(r'[0-9]')},
@@ -47,82 +47,72 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    final decorations = Decorations(context);
-
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+  Material.Widget build(Material.BuildContext context) {
+    return Material.Scaffold(
+      body: Material.Center(
+        child: Material.Column(
+          mainAxisAlignment: Material.MainAxisAlignment.start,
           children: [
-            SizedBox(height: 65),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 42),
-              child: Column(
+            Material.SizedBox(height: 65),
+            Material.Container(
+              padding: Material.EdgeInsets.symmetric(horizontal: 42),
+              child: Material.Column(
                 children: [
-                  Container(
+                  Material.Container(
                     width: 110,
                     height: 110,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(60),
+                    decoration: Material.BoxDecoration(
+                      borderRadius: Material.BorderRadius.circular(60),
                       color: Palette.primaryBlueToDark,
                     ),
-                    child: Center(
-                      child: Text(
+                    child: Material.Center(
+                      child: Material.Text(
                         'YR',
-                        style: TextStyle(
-                          color: Colors.white,
+                        style: Material.TextStyle(
+                          color: Material.Colors.white,
                           fontSize: 45,
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(height: 55),
-                  Text(
+                  Material.SizedBox(height: 55),
+                  Material.Text(
                     phoneMaskFormatter.getMaskedText(),
-                    style: TextStyle(
+                    style: Material.TextStyle(
                       color: Palette.textBlueToLight,
                       fontSize: 25,
-                      fontWeight: FontWeight.w500,
+                      fontWeight: Material.FontWeight.w500,
                     ),
                   ),
-                  SizedBox(height: 20),
-                  Text(
+                  Material.SizedBox(height: 20),
+                  Material.Text(
                     'Мы отправили вам SMS сообщение с\u{00A0}кодом.',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
+                    textAlign: Material.TextAlign.center,
+                    style: Material.TextStyle(
                       height: 1.2,
                       color: Palette.textBlueToLight,
                       fontSize: 14,
                     ),
                   ),
-                  SizedBox(height: 35),
-                  Form(
+                  Material.SizedBox(height: 35),
+                  Material.Form(
                     key: _formKey,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    child: Material.Column(
+                      crossAxisAlignment: Material.CrossAxisAlignment.start,
                       children: [
-                        Row(
+                        Material.Row(
                           children: [
-                            Expanded(
-                              child: TextFormField(
+                            Material.Expanded(
+                              child: TextField(
                                 controller: codeEditingController,
-                                cursorColor: Palette.textBlueToLight,
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: Palette.textBlueToLight,
-                                  fontWeight: FontWeight.w500,
+                                hintText: 'Код',
+                                icon: FontAwesome.FaIcon(
+                                  FontAwesome.FontAwesomeIcons.solidKey,
+                                  color: Palette.textBlueToLight.shade300,
+                                  size: 20,
                                 ),
-                                decoration: decorations.input.copyWith(
-                                  icon: FaIcon(
-                                    FontAwesomeIcons.solidKey,
-                                    color: Palette.textBlueToLight.shade300,
-                                    size: 20,
-                                  ),
-                                  hintText: 'Код',
-                                ),
-                                keyboardType: TextInputType.number,
                                 inputFormatters: [codeMaskFormatter],
+                                keyboardType: TextInputType.number,
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
                                     return 'Please enter some text';
@@ -133,28 +123,26 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                             )
                           ],
                         ),
-                        SizedBox(height: 30),
-                        Row(
-                          //padding: const EdgeInsets.symmetric(vertical: 16.0),
+                        Material.SizedBox(height: 46),
+                        Material.Row(
                           children: [
-                            Expanded(
-                              child: TextButton(
-                                style: TextButton.styleFrom(
-                                  minimumSize: Size(double.infinity, 45),
-                                  side: BorderSide(
-                                    //color: Palette.GreyToLight.shade400,
+                            Material.Expanded(
+                              child: Material.TextButton(
+                                style: Material.TextButton.styleFrom(
+                                  minimumSize: Material.Size(double.infinity, 45),
+                                  side: Material.BorderSide(
                                     color: Palette.primaryBlueToLight.shade700,
                                   ),
                                 ),
                                 onPressed: () {
-                                  Navigator.pop(context);
+                                  Material.Navigator.pop(context);
                                 },
-                                child: Text(
+                                child: Material.Text(
                                   'Назад'.toUpperCase(),
-                                  style: TextStyle(
+                                  style: Material.TextStyle(
                                     color: Palette.textBlueToLight,
                                     fontSize: 13,
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: Material.FontWeight.bold,
                                   ),
                                 ),
                               ),
