@@ -6,7 +6,7 @@ class HomeScreen extends Material.StatelessWidget {
   @override
   Material.Widget build(Material.BuildContext context) {
     return Material.Container(
-      child: Material.Text('Главная'),
+      child: Material.Text('Обзор'),
     );
   }
 }
