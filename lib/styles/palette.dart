@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const primaryBlueToDark = const MaterialColor(
+final primaryBlueToDark = const MaterialColor(
   0xff34589d,
   const <int, Color>{
     50: const Color(0xff2f4f8d),
@@ -16,7 +16,7 @@ const primaryBlueToDark = const MaterialColor(
   },
 );
 
-const primaryBlueToLight = const MaterialColor(
+final primaryBlueToLight = const MaterialColor(
   0xff34589d,
   const <int, Color>{
     50: const Color(0xff4869a7),
@@ -32,7 +32,7 @@ const primaryBlueToLight = const MaterialColor(
   },
 );
 
-const textBlueToLight = const MaterialColor(
+final textBlueToLight = const MaterialColor(
   0xff4c5b79,
   const <int, Color>{
     50: const Color(0xff5e6b86),
@@ -48,7 +48,7 @@ const textBlueToLight = const MaterialColor(
   },
 );
 
-const greyToLight = const MaterialColor(
+final greyToLight = const MaterialColor(
   0xffd2d2d2,
   const <int, Color>{
     50: const Color(0xffd7d7d7),
