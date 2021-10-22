@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-enum PageRouteDirections { rightToLeft, bottomToTop }
+enum ScreenRouteDirections { rightToLeft, bottomToTop }
 
 class ScreenRoute extends PageRouteBuilder {
   ScreenRoute({
     required Widget widget,
     required Duration transitionDuration,
-    PageRouteDirections direction = PageRouteDirections.rightToLeft,
+    ScreenRouteDirections direction = ScreenRouteDirections.rightToLeft,
   }) : super(
           pageBuilder: (context, animation, secondaryAnimation) => widget,
           transitionDuration: transitionDuration,
@@ -31,11 +31,11 @@ class ScreenRoute extends PageRouteBuilder {
         );
 
   static Offset _getOffsetByDirection(
-      PageRouteDirections direction) {
+      ScreenRouteDirections direction) {
     switch (direction) {
-      case PageRouteDirections.rightToLeft:
+      case ScreenRouteDirections.rightToLeft:
         return Offset(0.15, 0.0);
-      case PageRouteDirections.bottomToTop:
+      case ScreenRouteDirections.bottomToTop:
         return Offset(0.0, 0.15);
     }
   }
