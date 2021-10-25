@@ -1,0 +1,18 @@
+{
+  "@@locale": "ru",
+  "screenSignInTitle": "Вход в YouRoutine",
+  "@screenSignInTitle": {
+    "type": "text",
+    "description": "Заголовок экрана входа"
+  },
+  "screenSignInSubTitle": "Пожалуйста, укажите свою страну и\u00A0введите свой номер телефона.",
+  "@screenSignInSubTitle": {
+    "type": "text",
+    "description": "Подзаголовок экрана входа"
+  },
+  "screenSignInCountryFieldHint": "Выберите значение из списка",
+  "@screenSignInCountryFieldHint": {
+    "type": "text",
+    "description": "Валидация поля выбора страны"
+  }
+}

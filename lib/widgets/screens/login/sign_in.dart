@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart' as Material;
-import 'package:flutter/services.dart';
+import 'package:flutter/services.dart' as Services;
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart' as FontAwesome;
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:youroutine/assets/data/countries.dart';
@@ -13,9 +14,9 @@ import 'package:youroutine/widgets/screens/login/confirm.dart';
 import 'package:youroutine/styles/animations.dart' as Animations;
 
 class SignInScreen extends Material.StatefulWidget {
-  SignInScreen({Material.Key? key, required this.title}) : super(key: key);
-
-  final String title;
+  SignInScreen({
+    Material.Key? key,
+  }) : super(key: key);
 
   @override
   _SignInScreenState createState() => _SignInScreenState();
@@ -34,8 +35,8 @@ class _SignInScreenState extends Material.State<SignInScreen> {
     super.initState();
 
     phoneEditingController.value = phoneMaskFormatter.formatEditUpdate(
-      TextEditingValue(text: ''),
-      TextEditingValue(text: '7'),
+      Services.TextEditingValue(text: ''),
+      Services.TextEditingValue(text: '7'),
     );
   }
 
@@ -48,7 +49,6 @@ class _SignInScreenState extends Material.State<SignInScreen> {
   Material.Route _confirmScreenRoute() {
     return ScreenRoute(
       widget: ConfirmScreen(
-        title: 'Подтверждение входа',
         phoneNumber: phoneMaskFormatter.getUnmaskedText(),
       ),
       transitionDuration: Animations.screenTransitionDuration,
@@ -70,7 +70,7 @@ class _SignInScreenState extends Material.State<SignInScreen> {
                   Logo(),
                   Material.SizedBox(height: 55),
                   Material.Text(
-                    'Вход в YouRoutine',
+                    AppLocalizations.of(context)!.screenSignInTitle,
                     style: Material.TextStyle(
                       color: Palette.textBlueToLight,
                       fontSize: 25,
@@ -79,7 +79,7 @@ class _SignInScreenState extends Material.State<SignInScreen> {
                   ),
                   Material.SizedBox(height: 20),
                   Material.Text(
-                    'Пожалуйста, укажите свою страну и\u{00A0}введите свой номер телефона.',
+                    AppLocalizations.of(context)!.screenSignInSubTitle,
                     textAlign: Material.TextAlign.center,
                     style: Material.TextStyle(
                       height: 1.2,
@@ -108,7 +108,7 @@ class _SignInScreenState extends Material.State<SignInScreen> {
 
                                 print('You just selected $title');
                               },
-                              optionsBuilder: (TextEditingValue textEditingValue) {
+                              optionsBuilder: (Services.TextEditingValue textEditingValue) {
                                 if (textEditingValue.text == '') {
                                   return const Iterable<Country>.empty();
                                 }
@@ -119,7 +119,7 @@ class _SignInScreenState extends Material.State<SignInScreen> {
                               optionViewBuilder: (Country option) => Material.Text(option.title),
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
-                                  return 'Выберите значение из списка';
+                                  return AppLocalizations.of(context)!.screenSignInCountryFieldHint;
                                 }
                                 return null;
                               },
@@ -138,7 +138,7 @@ class _SignInScreenState extends Material.State<SignInScreen> {
                                 size: 20,
                               ),
                               inputFormatters: [phoneMaskFormatter],
-                              keyboardType: TextInputType.number,
+                              keyboardType: Services.TextInputType.number,
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
                                   return 'Please enter some text';

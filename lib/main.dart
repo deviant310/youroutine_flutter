@@ -1,21 +1,37 @@
-import 'package:flutter/material.dart';
+import 'dart:ui' as UI;
+import 'package:flutter/material.dart' as Material;
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart' as Localizations;
 import 'package:youroutine/styles/palette.dart' as Palette;
 import 'package:youroutine/widgets/screens/login/sign_in.dart';
 
 void main() {
-  runApp(App());
+  Material.runApp(App());
 }
 
-class App extends StatelessWidget {
+class App extends Material.StatelessWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'YouRoutine',
-      theme: ThemeData(
+  Material.Widget build(Material.BuildContext context) {
+    return Material.MaterialApp(
+      home: SignInScreen(),
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        Localizations.GlobalMaterialLocalizations.delegate,
+        Localizations.GlobalWidgetsLocalizations.delegate,
+        Localizations.GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        UI.Locale('en', ''),
+        UI.Locale('ru', ''),
+      ],
+      localeListResolutionCallback: (List? locales, Iterable supportedLocales) {
+        //return UI.Locale('en', '');
+      },
+      theme: Material.ThemeData(
         primarySwatch: Palette.primaryBlueToDark,
-        scaffoldBackgroundColor: Colors.white
+        scaffoldBackgroundColor: Material.Colors.white,
       ),
-      home: SignInScreen(title: 'Вход в YouRoutine')
+      title: 'YouRoutine',
     );
   }
 }

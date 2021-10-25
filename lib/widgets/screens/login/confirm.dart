@@ -8,11 +8,9 @@ import 'package:youroutine/styles/palette.dart' as Palette;
 class ConfirmScreen extends Material.StatefulWidget {
   ConfirmScreen({
     Material.Key? key,
-    required this.title,
     required this.phoneNumber,
   }) : super(key: key);
 
-  final String title;
   final String phoneNumber;
 
   @override

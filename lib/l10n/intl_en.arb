@@ -1,0 +1,18 @@
+{
+  "@@locale": "en",
+  "screenSignInTitle": "Log in YouRoutine",
+  "@screenSignInTitle": {
+    "type": "text",
+    "description": "Sign in screen title"
+  },
+  "screenSignInSubTitle": "Please confirm your country and\u00A0enter your phone number.",
+  "@screenSignInSubTitle": {
+    "type": "text",
+    "description": "Sign in screen subtitle"
+  },
+  "screenSignInCountryFieldHint": "Select value from list",
+  "@screenSignInCountryFieldHint": {
+    "type": "text",
+    "description": "Country field validation text"
+  }
+}
