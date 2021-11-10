@@ -1,4 +1,7 @@
-import 'package:flutter/material.dart';
+import 'dart:ui' show Offset;
+
+import 'package:flutter/material.dart'
+    show CurvedAnimation, Curves, FadeTransition, PageRouteBuilder, SlideTransition, Tween, Widget;
 
 enum ScreenRouteDirections { rightToLeft, bottomToTop }
 
@@ -13,11 +16,13 @@ class ScreenRoute extends PageRouteBuilder {
           reverseTransitionDuration: transitionDuration,
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             final tween = Tween(
-                begin: _getOffsetByDirection(direction), end: Offset.zero);
+              begin: _getOffsetByDirection(direction),
+              end: Offset.zero,
+            );
 
             final curvedAnimation = CurvedAnimation(
               parent: animation,
-              curve: Curves.easeOut,
+              curve: Curves.easeInOut,
             );
 
             return SlideTransition(
@@ -30,8 +35,7 @@ class ScreenRoute extends PageRouteBuilder {
           },
         );
 
-  static Offset _getOffsetByDirection(
-      ScreenRouteDirections direction) {
+  static Offset _getOffsetByDirection(ScreenRouteDirections direction) {
     switch (direction) {
       case ScreenRouteDirections.rightToLeft:
         return Offset(0.15, 0.0);

@@ -1,35 +1,55 @@
-import 'dart:ui' as UI;
-import 'package:flutter/material.dart' as Material;
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_localizations/flutter_localizations.dart' as Localizations;
-import 'package:youroutine/styles/palette.dart' as Palette;
-import 'package:youroutine/widgets/screens/login/sign_in.dart';
+import 'dart:ui' show Locale;
+
+import 'package:flutter/material.dart' show BuildContext, Colors, MaterialApp, runApp, StatelessWidget, ThemeData, Widget;
+import 'package:flutter_gen/gen_l10n/app_localizations.dart' show AppLocalizations;
+import 'package:flutter_localizations/flutter_localizations.dart'
+    show GlobalCupertinoLocalizations, GlobalMaterialLocalizations, GlobalWidgetsLocalizations;
+import 'package:youroutine/styles/palette.dart' show Palette;
+import 'package:youroutine/widgets/screens/login_screen.dart' show LoginScreen;
 
 void main() {
-  Material.runApp(App());
+  runApp(App());
 }
 
-class App extends Material.StatelessWidget {
+class App extends StatelessWidget {
   @override
-  Material.Widget build(Material.BuildContext context) {
-    return Material.MaterialApp(
-      home: SignInScreen(),
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: LoginScreen(),
       localizationsDelegates: [
         AppLocalizations.delegate,
-        Localizations.GlobalMaterialLocalizations.delegate,
-        Localizations.GlobalWidgetsLocalizations.delegate,
-        Localizations.GlobalCupertinoLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
       ],
       supportedLocales: [
-        UI.Locale('en', ''),
-        UI.Locale('ru', ''),
+        Locale('en', 'AG'),
+        Locale('en', 'AU'),
+        Locale('en', 'BW'),
+        Locale('en', 'CA'),
+        Locale('en', 'DK'),
+        Locale('en', 'GB'),
+        Locale('en', 'HK'),
+        Locale('en', 'IE'),
+        Locale('en', 'IL'),
+        Locale('en', 'IN'),
+        Locale('en', 'NG'),
+        Locale('en', 'NZ'),
+        Locale('en', 'PH'),
+        Locale('en', 'SC'),
+        Locale('en', 'SG'),
+        Locale('en', 'US'),
+        Locale('en', 'ZA'),
+        Locale('en', 'ZM'),
+        Locale('en', 'ZW'),
+        Locale('ru', 'RU'),
       ],
       localeListResolutionCallback: (List? locales, Iterable supportedLocales) {
-        //return UI.Locale('en', '');
+        //return Locale('en', 'CA');
       },
-      theme: Material.ThemeData(
+      theme: ThemeData(
         primarySwatch: Palette.primaryBlueToDark,
-        scaffoldBackgroundColor: Material.Colors.white,
+        scaffoldBackgroundColor: Colors.white,
       ),
       title: 'YouRoutine',
     );

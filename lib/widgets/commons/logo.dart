@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart' as Material;
-import 'package:youroutine/styles/palette.dart' as Palette;
+import 'package:flutter/material.dart' as Material
+    show BorderRadius, BoxDecoration, BuildContext, Center, Container, Colors, Key, StatelessWidget, Text, TextStyle, Widget;
+import 'package:youroutine/styles/palette.dart' show Palette;
 
 class Logo extends Material.StatelessWidget {
   const Logo({Material.Key? key}) : super(key: key);

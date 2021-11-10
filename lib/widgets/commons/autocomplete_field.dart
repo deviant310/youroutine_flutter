@@ -1,8 +1,30 @@
-import 'package:flutter/material.dart' as Material;
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart' as FontAwesome;
-import 'package:youroutine/widgets/commons/text_field.dart';
+import 'package:flutter/material.dart' as Material
+    show
+        Align,
+        Alignment,
+        Autocomplete,
+        AutocompleteHighlightedOption,
+        BoxConstraints,
+        BuildContext,
+        Builder,
+        Colors,
+        ConstrainedBox,
+        Container,
+        EdgeInsets,
+        InkWell,
+        Key,
+        LayoutBuilder,
+        ListView,
+        Material,
+        RawAutocomplete,
+        Scrollable,
+        StatelessWidget,
+        Theme,
+        Widget;
+import 'package:flutter/scheduler.dart' show SchedulerBinding;
+import 'package:flutter/services.dart' show TextEditingValue, TextInputFormatter, TextInputType;
+import 'package:font_awesome_flutter/font_awesome_flutter.dart' show FaIcon;
+import 'package:youroutine/widgets/commons/text_field.dart' show TextField;
 
 class AutocompleteField<T extends Object> extends Material.StatelessWidget {
   const AutocompleteField({
@@ -10,6 +32,7 @@ class AutocompleteField<T extends Object> extends Material.StatelessWidget {
     this.displayStringForOption = Material.RawAutocomplete.defaultStringForOption,
     this.hintText,
     this.icon,
+    this.initialValue,
     this.inputFormatters,
     this.keyboardType,
     this.onSelected,
@@ -20,7 +43,8 @@ class AutocompleteField<T extends Object> extends Material.StatelessWidget {
 
   final String Function(T) displayStringForOption;
   final String? hintText;
-  final FontAwesome.FaIcon? icon;
+  final FaIcon? icon;
+  final TextEditingValue? initialValue;
   final List<TextInputFormatter>? inputFormatters;
   final TextInputType? keyboardType;
   final void Function(T)? onSelected;
@@ -43,6 +67,7 @@ class AutocompleteField<T extends Object> extends Material.StatelessWidget {
             validator: validator,
           );
         },
+        initialValue: initialValue,
         onSelected: onSelected,
         optionsBuilder: optionsBuilder,
         optionsViewBuilder: (context, onSelected, options) {

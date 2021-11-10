@@ -1,7 +1,21 @@
-import 'package:flutter/material.dart' as Material;
-import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart' as FontAwesome;
-import 'package:youroutine/styles/palette.dart' as Palette;
+import 'package:flutter/material.dart' as Material
+    show
+        BorderSide,
+        BuildContext,
+        FocusNode,
+        FontWeight,
+        InputDecoration,
+        Key,
+        StatelessWidget,
+        TextEditingController,
+        TextFormField,
+        TextStyle,
+        Theme,
+        UnderlineInputBorder,
+        Widget;
+import 'package:flutter/services.dart' show TextInputFormatter, TextInputType;
+import 'package:font_awesome_flutter/font_awesome_flutter.dart' show FaIcon;
+import 'package:youroutine/styles/palette.dart' show Palette;
 
 class TextField extends Material.StatelessWidget {
   const TextField({
@@ -10,17 +24,21 @@ class TextField extends Material.StatelessWidget {
     this.focusNode,
     this.hintText,
     this.icon,
+    this.initialValue,
     this.inputFormatters,
     this.keyboardType,
+    this.onChanged,
     this.validator,
   }) : super(key: key);
 
   final Material.TextEditingController? controller;
   final Material.FocusNode? focusNode;
   final String? hintText;
-  final FontAwesome.FaIcon? icon;
+  final FaIcon? icon;
+  final String? initialValue;
   final List<TextInputFormatter>? inputFormatters;
   final TextInputType? keyboardType;
+  final void Function(String)? onChanged;
   final String? Function(String?)? validator;
 
   @override
@@ -52,8 +70,10 @@ class TextField extends Material.StatelessWidget {
         icon: icon,
       ),
       focusNode: focusNode,
+      initialValue: initialValue,
       inputFormatters: inputFormatters,
       keyboardType: keyboardType,
+      onChanged: onChanged,
       style: Material.TextStyle(
         color: Palette.textBlueToLight,
         fontSize: 14,
